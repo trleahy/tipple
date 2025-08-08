@@ -74,7 +74,8 @@ async function transformSupabaseUser(user: User): Promise<UserProfile> {
       .eq('id', user.id)
       .single();
 
-    const { data: profile, error: profileError } = await Promise.race([profilePromise, timeoutPromise]);
+    const { data, error: profileError } = await Promise.race([profilePromise, timeoutPromise]);
+    let profile = data;
 
     // If user doesn't exist in users table, create them
     if (!profile && !profileError?.message?.includes('timeout')) {

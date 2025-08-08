@@ -341,7 +341,7 @@ export async function addGlassType(glassType: GlassType): Promise<boolean> {
       await smartCache.invalidateGlassTypesCache();
       logger.info('Glass types cache invalidated after addition');
     } catch (cacheError) {
-      logger.warn('Failed to invalidate glass types cache', cacheError);
+      logger.warn('Failed to invalidate glass types cache', { error: cacheError });
     }
 
     logger.info('Glass type added successfully', { glassTypeId: glassType.id, name: glassType.name });
@@ -383,7 +383,7 @@ export async function updateGlassType(glassTypeId: string, updatedGlassType: Gla
       await smartCache.invalidateGlassTypesCache();
       logger.info('Glass types cache invalidated after update');
     } catch (cacheError) {
-      logger.warn('Failed to invalidate glass types cache', cacheError);
+      logger.warn('Failed to invalidate glass types cache', { error: cacheError });
     }
 
     logger.info('Glass type updated successfully', { glassTypeId, name: updatedGlassType.name });
@@ -418,7 +418,7 @@ export async function deleteGlassType(glassTypeId: string): Promise<boolean> {
       await smartCache.invalidateGlassTypesCache();
       logger.info('Glass types cache invalidated after deletion');
     } catch (cacheError) {
-      logger.warn('Failed to invalidate glass types cache', cacheError);
+      logger.warn('Failed to invalidate glass types cache', { error: cacheError });
     }
 
     logger.info('Glass type deleted successfully', { glassTypeId });
@@ -491,7 +491,7 @@ export async function addCategory(category: Category): Promise<boolean> {
       await smartCache.invalidateCategoriesCache();
       logger.info('Categories cache invalidated after addition');
     } catch (cacheError) {
-      logger.warn('Failed to invalidate categories cache', cacheError);
+      logger.warn('Failed to invalidate categories cache', { error: cacheError });
     }
 
     // Invalidate caches and trigger refresh
@@ -537,7 +537,7 @@ export async function updateCategory(categoryId: string, updatedCategory: Catego
       await smartCache.invalidateCategoriesCache();
       logger.info('Categories cache invalidated after update');
     } catch (cacheError) {
-      logger.warn('Failed to invalidate categories cache', cacheError);
+      logger.warn('Failed to invalidate categories cache', { error: cacheError });
     }
 
     // Invalidate caches and trigger refresh
@@ -590,7 +590,7 @@ export async function deleteCategory(categoryId: string): Promise<boolean> {
       await smartCache.invalidateCategoriesCache();
       logger.info('Categories cache invalidated after deletion');
     } catch (cacheError) {
-      logger.warn('Failed to invalidate categories cache', cacheError);
+      logger.warn('Failed to invalidate categories cache', { error: cacheError });
     }
 
     // Invalidate caches and trigger refresh
