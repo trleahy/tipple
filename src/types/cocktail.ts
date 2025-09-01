@@ -59,7 +59,8 @@ export enum IngredientCategory {
   SYRUP = 'syrup',
   BITTERS = 'bitters',
   GARNISH = 'garnish',
-  OTHER = 'other'
+  OTHER = 'other',
+  WINE = 'wine'
 }
 
 export enum CocktailCategory {
@@ -73,7 +74,9 @@ export enum CocktailCategory {
   REFRESHING = 'refreshing',
   CREAMY = 'creamy',
   HOT = 'hot',
-  FROZEN = 'frozen'
+  FROZEN = 'frozen',
+  Martini = 'martini',
+  Shot = 'shot'
 }
 
 export enum Difficulty {

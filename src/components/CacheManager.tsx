@@ -26,9 +26,24 @@ export default function CacheManager() {
     }
   };
 
+  // Preload glass types and categories to ensure they get cached
+  const preloadData = async () => {
+    try {
+      // Load glass types and categories in background to populate cache
+      await Promise.all([
+        smartCache.getGlassTypes(),
+        smartCache.getCategories()
+      ]);
+      console.log('Glass types and categories preloaded for caching');
+    } catch (error) {
+      console.warn('Failed to preload glass types and categories:', error);
+    }
+  };
+
   useEffect(() => {
     if (isOpen) {
       loadStats();
+      preloadData(); // Preload glass types and categories
     }
   }, [isOpen]);
 

@@ -63,21 +63,21 @@ class DataRefreshManager {
   // Refresh all data and notify listeners
   async refreshAllData(): Promise<void> {
     console.log('Refreshing all data and notifying listeners');
-    
+
     try {
       // Invalidate caches first
       invalidateAllCaches();
-      
+
       // Preload fresh data
       await Promise.all([
         getAllCocktailsAsync(),
         getAllIngredientsAsync()
       ]);
-      
+
       // Notify all listeners
       this.notifyCocktailDataChange();
       this.notifyIngredientDataChange();
-      
+
       console.log('All data refreshed successfully');
     } catch (error) {
       console.error('Error refreshing all data:', error);
